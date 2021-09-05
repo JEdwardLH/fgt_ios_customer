@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PagerCollectionViewCell" id="gTV-IL-0wX" customClass="PagerCollectionViewCell" customModule="Hungry_Now" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="362" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="362" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AV5-10-FqD">
+                        <rect key="frame" x="0.0" y="0.0" width="362" height="200"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHO-0j-bk3">
+                                <rect key="frame" x="0.0" y="0.0" width="362" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VRY-Df-2pS">
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="200"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="VRY-Df-2pS" secondAttribute="trailing" id="BHa-bg-He2"/>
+                                    <constraint firstItem="VRY-Df-2pS" firstAttribute="top" secondItem="ZHO-0j-bk3" secondAttribute="top" id="Nrm-yF-J91"/>
+                                    <constraint firstAttribute="bottom" secondItem="VRY-Df-2pS" secondAttribute="bottom" id="a5E-Lr-D5b"/>
+                                    <constraint firstItem="VRY-Df-2pS" firstAttribute="leading" secondItem="ZHO-0j-bk3" secondAttribute="leading" id="cZS-lo-xmz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZHO-0j-bk3" firstAttribute="leading" secondItem="AV5-10-FqD" secondAttribute="leading" id="D2g-Ry-Msa"/>
+                            <constraint firstItem="ZHO-0j-bk3" firstAttribute="top" secondItem="AV5-10-FqD" secondAttribute="top" id="PWx-X0-VV8"/>
+                            <constraint firstAttribute="bottom" secondItem="ZHO-0j-bk3" secondAttribute="bottom" id="ea5-v4-BQm"/>
+                            <constraint firstAttribute="trailing" secondItem="ZHO-0j-bk3" secondAttribute="trailing" id="iVr-pb-n24"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="AV5-10-FqD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NFL-z4-9Cr"/>
+                <constraint firstAttribute="trailing" secondItem="AV5-10-FqD" secondAttribute="trailing" id="TSk-6X-9v1"/>
+                <constraint firstItem="AV5-10-FqD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bdR-B4-TBi"/>
+                <constraint firstAttribute="bottom" secondItem="AV5-10-FqD" secondAttribute="bottom" id="kMX-gp-gJt"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="362" height="200"/>
+            <connections>
+                <outlet property="offerImageView" destination="VRY-Df-2pS" id="31E-BC-xfR"/>
+            </connections>
+            <point key="canvasLocation" x="402.89855072463769" y="45.535714285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_placeholder" width="512" height="384"/>
+    </resources>
+</document>
