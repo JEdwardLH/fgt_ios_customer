@@ -30,7 +30,6 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.1)
   - BottomPopup (0.4.1)
-  - CardIO (5.4.1)
   - CCValidator (1.0.2)
   - CocoaAsyncSocket (7.6.3)
   - CocoaMQTT (1.1.3):
@@ -144,12 +143,6 @@ PODS:
   - NVActivityIndicatorView (4.5.1):
     - NVActivityIndicatorView/Presenter (= 4.5.1)
   - NVActivityIndicatorView/Presenter (4.5.1)
-  - PayPal-iOS-SDK (2.18.1):
-    - PayPal-iOS-SDK/CardIO (= 2.18.1)
-    - PayPal-iOS-SDK/Core (= 2.18.1)
-  - PayPal-iOS-SDK/CardIO (2.18.1):
-    - CardIO (~> 5.4.1)
-  - PayPal-iOS-SDK/Core (2.18.1)
   - Popover (1.2.2)
   - Protobuf (3.6.1)
   - RAMAnimatedTabBarController (4.0.1)
@@ -191,7 +184,6 @@ DEPENDENCIES:
   - MarqueeLabel/Swift
   - MIBlurPopup
   - NVActivityIndicatorView
-  - PayPal-iOS-SDK
   - Popover
   - RAMAnimatedTabBarController
   - SCLAlertView
@@ -211,7 +203,6 @@ SPEC REPOS:
     - BetterSegmentedControl
     - Bolts
     - BottomPopup
-    - CardIO
     - CCValidator
     - CocoaAsyncSocket
     - CocoaMQTT
@@ -244,7 +235,6 @@ SPEC REPOS:
     - MIBlurPopup
     - nanopb
     - NVActivityIndicatorView
-    - PayPal-iOS-SDK
     - Popover
     - Protobuf
     - RAMAnimatedTabBarController
@@ -274,7 +264,6 @@ SPEC CHECKSUMS:
   BetterSegmentedControl: ea08bea31345cf096977ef5aa588b635fb21fa18
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   BottomPopup: 052f0ea8bb1110d633e66529cbb07b8599eb227d
-  CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
   CCValidator: 49175409dcd9da1a1bd8d7cc6db31d44a301da84
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CocoaMQTT: b506d38ad3bbe1c55a4f8ee8c9fd02c35da1a7d8
@@ -308,7 +297,6 @@ SPEC CHECKSUMS:
   MIBlurPopup: e0834e469074cabf65a0ca6e6d900c84d48f8a4f
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
-  PayPal-iOS-SDK: 70d56697aef502c130b9840e31dea5c6b8a350e1
   Popover: 21e357f86d45c8d9e29a41a4adbca3664d6e511f
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   RAMAnimatedTabBarController: 677d6f7ec7e88b1089486f4db49b0a5067e8ad1c
@@ -319,6 +307,6 @@ SPEC CHECKSUMS:
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
 
-PODFILE CHECKSUM: 3189726e40f44cdd8b9616bdb07f0db0192d335c
+PODFILE CHECKSUM: 95e0d3885bc7b18582d4d27ed3d54d1523d66006
 
 COCOAPODS: 1.10.0

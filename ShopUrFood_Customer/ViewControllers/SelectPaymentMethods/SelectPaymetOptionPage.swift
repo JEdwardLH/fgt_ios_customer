@@ -12,7 +12,7 @@ import CCValidator
 import AMPopTip
 
 @available(iOS 11.0, *)
-class SelectPaymetOptionPage: BaseViewController,UITableViewDelegate,UITableViewDataSource,PayPalPaymentDelegate,SambagMonthYearPickerViewControllerDelegate,UITextFieldDelegate {
+class SelectPaymetOptionPage: BaseViewController,UITableViewDelegate,UITableViewDataSource,SambagMonthYearPickerViewControllerDelegate,UITextFieldDelegate {
    
     @IBOutlet weak var skipBtn: UIButton!
     
@@ -104,15 +104,9 @@ class SelectPaymetOptionPage: BaseViewController,UITableViewDelegate,UITableView
     var remainingAmountCalc = Int()
     
     //PayPal Variables
-     var payPalConfig = PayPalConfiguration()
+   
     //MARK:- PayPal Constants
-    var environment:String = PayPalEnvironmentSandbox {
-        willSet(newEnvironment) {
-            if (newEnvironment != environment) {
-                PayPalMobile.preconnect(withEnvironment: newEnvironment)
-            }
-        }
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -262,7 +256,7 @@ class SelectPaymetOptionPage: BaseViewController,UITableViewDelegate,UITableView
         else if selectedPaymetMethod == "\(GlobalLanguageDictionary.object(forKey: "paypal") as! String)"
         {
             
-                self.payByPaypal()
+               // self.payByPaypal()
                 login_session.setValue("0", forKey: "userCartCount")
         }
         else if selectedPaymetMethod == "\(GlobalLanguageDictionary.object(forKey: "stripe") as! String)"
@@ -761,7 +755,7 @@ class SelectPaymetOptionPage: BaseViewController,UITableViewDelegate,UITableView
                 if  userAllowedToPay
                 {
                 self.cartGrayView.isHidden = true
-                self.payByPaypal()
+               // self.payByPaypal()
                 login_session.setValue("0", forKey: "userCartCount")
                 }
                 else
@@ -2005,150 +1999,14 @@ class SelectPaymetOptionPage: BaseViewController,UITableViewDelegate,UITableView
     }
     
     //MARK:- PayPal Payment methods
-    func payByPaypal()
-    {
-        self.payPalOldConfigure()
-        let totalArray = payingPayPalTotalAmt.components(separatedBy: " ")
-        var totalStr = totalArray[1]
-        totalStr = totalStr.replacingOccurrences(of: ",", with: "")
-        let amount = NSDecimalNumber(string: "\(totalStr)")
-        let paymentDetails = PayPalPaymentDetails(subtotal: amount, withShipping: 0.00, withTax: 0.00)
-        let payment = PayPalPayment(amount: amount, currencyCode: "USD", shortDescription: "FoodToGo", intent: .sale)
-        
-        payment.paymentDetails = paymentDetails
-        if (payment.processable) {
-            let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)
-            present(paymentViewController!, animated: true, completion: nil)
-        }
-        
-    }
+    
     
     // MARK: Paypal Old Configure
-    func payPalOldConfigure() {
-        //successView.isHidden = true
-        // Set up payPalConfig
-        payPalConfig.acceptCreditCards = false
-        payPalConfig.merchantName = "FoodToGo!"
-        payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
-        payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
-        payPalConfig.languageOrLocale = Locale.preferredLanguages[0]
-        // Setting the payPalShippingAddressOption property is optional.
-        // See PayPalConfiguration.h for details.
-        //payPalConfig.payPalShippingAddressOption = .none;
-        //print("PayPal iOS SDK Version: \(PayPalMobile.libraryVersion())")
-    }
+   
     
     
     // MARK:  PayPalPaymentDelegate
-    func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
-        print("PayPal Payment Cancelled")
-        paymentViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
-        print("PayPal Payment Success !")
-        paymentViewController.dismiss(animated: true, completion: { () -> Void in
-            // send completed confirmaion to your server
-            //print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
-            let paymentDict = completedPayment.confirmation as NSDictionary
-            let responseDict = NSMutableDictionary()
-            responseDict.addEntries(from: paymentDict.object(forKey: "response") as! [AnyHashable : Any])
-//            let transaction_Id = responseDict.object(forKey: "id")as! String
-//            print(paymentDict.value(forKeyPath: "response.id") as Any)
-            var transaction_id = String()
-            let timestamp = Date().currentTimeMillis()
-            transaction_id = String("PAY-\(timestamp ?? 0)")
-            self.paypalTransactionIdSendToAPI(trans_id: transaction_id)
-        })
-    }
-    
-    
-    // MARK:  PayPal transaction Id send to API
-    func paypalTransactionIdSendToAPI(trans_id:String){
-        
-        self.showLoadingIndicator(senderVC: self)
-        var self_pickupStr = String()
-        var firstName = String()
-        var lastName = String()
-        var emailStr = String()
-        var mobileNumber = String()
-        var mobileNo2 = String()
-        var address = String()
-        var landmark = String()
-        var latStr = String()
-        var longStr = String()
-        var walletStr = String()
-        var walletAmtStr = String()
-        if pickUpType == "self"{
-            self_pickupStr = "1"
-            firstName = ""
-            lastName = ""
-            emailStr = ""
-            mobileNumber = ""
-            mobileNo2 = ""
-            address = ""
-            latStr = ""
-            longStr = ""
-            landmark = ""
-        }else{
-            self_pickupStr = "0"
-            firstName = addressDict.object(forKey: "sh_cus_fname") as! String
-            lastName = addressDict.object(forKey: "sh_cus_lname") as! String
-            emailStr = addressDict.object(forKey: "sh_cus_email") as! String
-            mobileNumber = addressDict.object(forKey: "sh_phone1") as! String
-            mobileNo2 = addressDict.object(forKey: "sh_phone2") as! String
-            address = addressDict.object(forKey: "sh_location") as! String
-            landmark = addressDict.object(forKey: "sh_location1") as! String
-            latStr = addressDict.object(forKey: "sh_latitude") as! String
-            longStr = addressDict.object(forKey: "sh_longitude") as! String
-            
-        }
-        if useWallet{
-            walletStr = "1"
-            walletAmtStr = self.finalWallet_Amount
-
-//            if exactToatlAmt < walletAvailableBalance{
-//                walletAmtStr = String(format: "%.2f", exactToatlAmt)
-//            }else{
-//                walletAmtStr = String(format: "%.2f", walletAvailableBalance)
-//            }
-        }else{
-            walletStr = "0"
-            walletAmtStr = ""
-        }
-        
-        if useCouponOffer == true
-        {
-            self.couponisUsed = "1"
-        }
-        else
-        {
-            self.couponisUsed = "0"
-            self.selectedCouponID = ""
-            self.selectedCouponPrice = ""
-        }
-        
-        let Parse = CommomParsing()
-        Parse.PayPal_payment(lang: ((login_session.value(forKey: "Language") as? String) ?? "th"),ord_self_pickup: self_pickupStr,cus_name: firstName,cus_last_name: lastName,cus_email: emailStr,cus_phone1: mobileNumber,cus_phone2: mobileNo2,cus_address: address,cus_address1: landmark,cus_lat: latStr,cus_long: longStr,use_wallet: walletStr,wallet_amt: walletAmtStr,transaction_id: trans_id,use_coupon: self.couponisUsed, coupon_id: selectedCouponID, coupon_amount: selectedCouponPrice, onSuccess: {
-            response in
-            print (response)
-            if response.object(forKey: "code") as! Int == 200{
-                self.showSuccessPopUp(msgStr: response.object(forKey: "message") as! String)
-                isfromPaymentSucessPage = true
-                if self.useCouponOffer == true
-                {
-                    self.useCouponOffer = false
-                }
-
-            }else if response.object(forKey: "code")as! Int == 400 && response.object(forKey: "message")as! String == "Token is Expired" {
-                self.showTokenExpiredPopUp(msgStr: response.object(forKey: "message")as! String)
-            }
-            else{
-            }
-            self.stopLoadingIndicator(senderVC: self)
-        }, onFailure: {errorResponse in})
-        
-    }
+   
     
     
     // MARK: isValidCard

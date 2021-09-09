@@ -52,8 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor:UIColor.gray], for: .selected)
         
         // Init Paypal
-        PayPalMobile .initializeWithClientIds(forEnvironments: [PayPalEnvironmentSandbox: "AVomx52Gh-UDWy2BSntGqIVSwi5dnc9t6vCdMRyohM_C2Llk6xep2L22sRm9nLAVt-zG5i9zwF8NC1ft"])
-        //application.shared.applicationIconBadgeNumber = 0
+       
         application.applicationIconBadgeNumber = 0 
         
         // [START register_for_notifications]

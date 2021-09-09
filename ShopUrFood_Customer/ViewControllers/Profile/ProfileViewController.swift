@@ -40,7 +40,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     var userLongitude = String()
     var countryListArr1 = NSMutableArray()
     var countryListArr2 = NSMutableArray()
-     var firstCountryCodeStr : String = "+66"
+     var firstCountryCodeStr : String = "+63"
      let countryCodeDropDown = DropDown()
     
     @IBOutlet weak var transpertantView: UIView!
@@ -231,10 +231,10 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         userNameTxt.text = self.resultDict.object(forKey: "user_name")as? String ?? ""
         emailTxt.text = self.resultDict.object(forKey: "user_email")as? String ?? ""
         mobileNumberTxt.text = self.resultDict.object(forKey: "user_ph1_no_only")as? String ?? ""
-        firstCountryCodeStr = self.resultDict.object(forKey: "user_ph1_cnty_code")as? String ?? "+66"
+        firstCountryCodeStr = self.resultDict.object(forKey: "user_ph1_cnty_code")as? String ?? "+63"
         if firstCountryCodeStr == ""
         {
-          firstCountryCodeStr = "+66"
+          firstCountryCodeStr = "+63"
         }
         dropDownBtn.setTitle(firstCountryCodeStr, for: .normal)
         userLocationStr = self.resultDict.object(forKey: "user_address")as? String ?? ""
