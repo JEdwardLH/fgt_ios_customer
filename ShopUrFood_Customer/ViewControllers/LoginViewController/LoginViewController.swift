@@ -130,7 +130,7 @@ class LoginViewController: BaseViewController,GIDSignInDelegate,UITextFieldDeleg
                     let user_id = dataDict.object(forKey: "user_id")
                     let user_name = dataDict.object(forKey: "user_name")as! String
                         let phone = (dataDict.object(forKey: "user_phone") as? String ?? "")
-                        //phone = phone.replacingOccurrences(of: "+63", with: "")
+                        //phone = phone.replacingOccurrences(of: "+91", with: "")
                     let token = dataDict.object(forKey: "token")as! String
                     login_session.setValue(user_email, forKey: "user_email")
                     login_session.setValue("0", forKey: "userCartCount")
@@ -202,7 +202,7 @@ class LoginViewController: BaseViewController,GIDSignInDelegate,UITextFieldDeleg
                 let user_id = String(dataDict.object(forKey: "user_id")as! Int)
                 let user_name = dataDict.object(forKey: "user_name")as! String
                 let phone = dataDict.object(forKey: "user_phone")as! String
-                //phone = phone.replacingOccurrences(of: "+63", with: "")
+                //phone = phone.replacingOccurrences(of: "+91", with: "")
                 let token = dataDict.object(forKey: "token")as! String
                 login_session.setValue(user_email, forKey: "user_email")
                 login_session.setValue("0", forKey: "userCartCount")
@@ -281,7 +281,7 @@ class LoginViewController: BaseViewController,GIDSignInDelegate,UITextFieldDeleg
                             let user_id = String(dataDict.object(forKey: "user_id")as! Int)
                             let user_name = dataDict.object(forKey: "user_name")as! String
                             let phone = dataDict.object(forKey: "user_phone")as! String
-                            //phone = phone.replacingOccurrences(of: "+63", with: "")
+                            //phone = phone.replacingOccurrences(of: "+91", with: "")
                             let token = dataDict.object(forKey: "token")as! String
                             login_session.setValue(user_email, forKey: "user_email")
                             login_session.setValue("0", forKey: "userCartCount")

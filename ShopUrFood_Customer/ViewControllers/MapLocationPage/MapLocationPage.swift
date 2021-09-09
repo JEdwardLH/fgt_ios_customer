@@ -108,11 +108,20 @@ class MapLocationPage: BaseViewController,CLLocationManagerDelegate,GMSMapViewDe
     
     @IBAction func savedLocationsButtonClicked(_ sender: Any)
     {
-       
-       
+        if CLLocationManager.locationServicesEnabled() {
+                          //locationManager.allowsBackgroundLocationUpdates = true
+          locManager.delegate = self
+          locManager.desiredAccuracy = kCLLocationAccuracyBest
+          locManager.startUpdatingLocation()
+        }else{
+         
+        }
+        let lat = locManager.location?.coordinate.latitude
+        let long = locManager.location?.coordinate.longitude
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MapLocationPage") as! MapLocationPage
-       
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CustomerAddressManageViewController") as! CustomerAddressManageViewController
+        nextViewController.st_latitude = "\(lat ?? 0)"
+        nextViewController.st_longitude = "\(long ?? 0)"
         //changes done here
         //nextViewController.isfromMapLocationPage = true
         nextViewController.modalPresentationStyle = .fullScreen

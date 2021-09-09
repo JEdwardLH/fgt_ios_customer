@@ -80,7 +80,7 @@ class SelectAddressViewController: BaseViewController,UITextFieldDelegate,UIText
     //dropDown
     let countryCodeDropDown = DropDown()
     let AltercountryCodeDropDown = DropDown()
-    var firstCountryCodeStr : String = "+63"
+    var firstCountryCodeStr : String = "+66"
     var secondCountryCodeStr : String = ""
 
     
@@ -193,12 +193,20 @@ class SelectAddressViewController: BaseViewController,UITextFieldDelegate,UIText
     
     @IBAction func manageAddressButtonTapped(_ sender: Any)
     {
-      
+        if CLLocationManager.locationServicesEnabled() {
+                          //locationManager.allowsBackgroundLocationUpdates = true
+          locManager.delegate = self
+          locManager.desiredAccuracy = kCLLocationAccuracyBest
+          locManager.startUpdatingLocation()
+        }else{
+         
+        }
         let lat = locManager.location?.coordinate.latitude
         let long = locManager.location?.coordinate.longitude
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MapLocationPage") as! MapLocationPage
-       
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CustomerAddressManageViewController") as! CustomerAddressManageViewController
+        nextViewController.st_latitude = "\(lat ?? 0)"
+        nextViewController.st_longitude = "\(long ?? 0)"
         //changes done here
         //nextViewController.isfromMapLocationPage = true
         nextViewController.modalPresentationStyle = .fullScreen
@@ -512,11 +520,11 @@ class SelectAddressViewController: BaseViewController,UITextFieldDelegate,UIText
         
         if (resultDict.object(forKey: "ship_ph1_cnty_code") as? String) == ""
         {
-            firstCountryCodeStr = "+63"
+            firstCountryCodeStr = "+66"
         }
         else
         {
-            firstCountryCodeStr = (resultDict.object(forKey: "ship_ph1_cnty_code")as? String ?? "+63")
+            firstCountryCodeStr = (resultDict.object(forKey: "ship_ph1_cnty_code")as? String ?? "+66")
         }
         
         secondCountryCodeStr = resultDict.object(forKey: "ship_ph2_cnty_code")as? String ?? ""
