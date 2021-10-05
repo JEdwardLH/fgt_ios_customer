@@ -18,7 +18,7 @@ import IQKeyboardManager
 import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
-
+import AppTrackingTransparency
 
 
 @UIApplicationMain
@@ -38,8 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
 
         //key for Mikael App
-        GMSServices.provideAPIKey("AIzaSyBOJLYvW5jj_TfkLfQ9OfhFDfZijuWMbWI")
-        GMSPlacesClient.provideAPIKey("AIzaSyBOJLYvW5jj_TfkLfQ9OfhFDfZijuWMbWI")
+        GMSServices.provideAPIKey("AIzaSyAvZk2hZFLm8OrjCTOi1ebjHD-D9Rw9iSo")
+        GMSPlacesClient.provideAPIKey("AIzaSyAvZk2hZFLm8OrjCTOi1ebjHD-D9Rw9iSo")
         IQKeyboardManager.shared().isEnabled = true
         
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
@@ -87,9 +87,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
         self.ConnectToFCM()
         self.languageUpdate1()
+        self.requestPermission()
         return true
     }
-    
+    func requestPermission() {
+       if #available(iOS 14, *) {
+           ATTrackingManager.requestTrackingAuthorization { status in
+               switch status {
+               case .authorized:
+                   // Tracking authorization dialog was shown
+                   // and we are authorized
+                   print("Authorized")
+                let strIDFV = UIDevice.current.identifierForVendor?.uuidString
+                       
+                       print("appsflyersVendor = \(strIDFV!)")
+                       
+                      
+               case .denied:
+                   // Tracking authorization dialog was
+                   // shown and permission is denied
+                   print("Denied")
+               case .notDetermined:
+                   // Tracking authorization dialog has not been shown
+                   print("Not Determined")
+               case .restricted:
+                   print("Restricted")
+               @unknown default:
+                   print("Unknown")
+               }
+           }
+       } else {
+           // Fallback on earlier versions
+       }
+   }
     func languageUpdate()
     {
         if let path = Bundle.main.path(forResource: "English", ofType: "json") {

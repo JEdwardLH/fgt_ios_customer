@@ -87,6 +87,8 @@
 	<string>We show the restaurants based on the user location. So User can find near by resturants easily</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>User can upload the user image using the camera and gallery</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This will only be used to serve relevant promotions.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>TruenoRg.otf</string>

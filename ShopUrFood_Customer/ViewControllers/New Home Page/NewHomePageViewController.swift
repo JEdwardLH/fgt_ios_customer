@@ -15,7 +15,8 @@ import SWRevealViewController
 @available(iOS 11.0, *)
 class NewHomePageViewController: BaseViewController,UITextFieldDelegate,UITableViewDelegate, UITableViewDataSource,delegateForHomeItem,delegateForHomeItem1,delegateForHomeFeatured {
     
-
+    @IBOutlet weak var appLogo: UIImageView!
+    
     @IBOutlet weak var topNavigationView: UIView!
     @IBOutlet weak var HomeBGView: UIView!
     @IBOutlet weak var noItemsView: UIView!
@@ -81,7 +82,9 @@ class NewHomePageViewController: BaseViewController,UITextFieldDelegate,UITableV
         //self.searchGrayView.isHidden = true
         self.searchLocationBtn.layer.cornerRadius = 8.0
         
-        
+        let appimg = URL(string:"https://foodtogodeliveryph.com/public/images/logo/applogo.png")
+
+        appLogo.kf.setImage(with: appimg)
         if login_session.object(forKey: "user_id") == nil
         {
             menuBtn.isHidden = false

@@ -1321,7 +1321,7 @@ class CustomerAddressManageViewController: BaseViewController,CLLocationManagerD
     func googlePlacesResult2(input: String, completion: @escaping (_ result: NSArray) -> Void) {
        
            
-           let urlString = NSString(format: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&key=AIzaSyAUSBquvfmOg6-YMDxAVRYkDABzk9yoO3o&sessiontoken=1234567890",input)
+           let urlString = NSString(format: "https://foodtogodeliveryph.com/autocomplete/json?input=%@",input)
             
             print(urlString)
                         let url = NSURL(string: urlString.addingPercentEscapes(using: String.Encoding.utf8.rawValue)!)
@@ -1385,7 +1385,7 @@ class CustomerAddressManageViewController: BaseViewController,CLLocationManagerD
        
             let indexPath = IndexPath.init(row: 0, section: 0)
             let cell = self.addressTableView.cellForRow(at: indexPath) as! CartDeliveryAddressCell
-           let urlString = NSString(format: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&key=AIzaSyAUSBquvfmOg6-YMDxAVRYkDABzk9yoO3o&sessiontoken=1234567890",input)
+           let urlString = NSString(format: "https://foodtogodeliveryph.com/autocomplete/json?input=%@",input)
             
             print(urlString)
                         let url = NSURL(string: urlString.addingPercentEscapes(using: String.Encoding.utf8.rawValue)!)
@@ -1474,7 +1474,7 @@ class CustomerAddressManageViewController: BaseViewController,CLLocationManagerD
         
         if (login_session.value(forKey: "Language") as? String) == "en"
         {
-        let urlString = NSString(format: "https://maps.googleapis.com/maps/api/place/details/json?input=&placeid=%@&key=AIzaSyAUSBquvfmOg6-YMDxAVRYkDABzk9yoO3o&language=en",place_id)
+        let urlString = NSString(format: "https://foodtogodeliveryph.com/place/details/json?input=&placeid=%@",place_id)
             
         print(urlString)
         //let url = NSURL(string: urlString.addingPercentEscapes(using: String.Encoding.utf8.rawValue)!)
@@ -1524,7 +1524,7 @@ class CustomerAddressManageViewController: BaseViewController,CLLocationManagerD
         }
         else
         {
-            let urlString = NSString(format: "https://maps.googleapis.com/maps/api/place/details/json?input=&placeid=%@&key=AIzaSyAUSBquvfmOg6-YMDxAVRYkDABzk9yoO3o&language=th",place_id)
+            let urlString = NSString(format: "https://foodtogodeliveryph.com/place/details/json?input=&placeid=%@&key=AIzaSyAUSBquvfmOg6-YMDxAVRYkDABzk9yoO3o&language=th",place_id)
             print(urlString)
             //let url = NSURL(string: urlString.addingPercentEscapes(using: String.Encoding.utf8.rawValue)!)
             let url = URL(string: urlString as String)

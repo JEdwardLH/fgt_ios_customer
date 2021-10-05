@@ -507,7 +507,7 @@ class MapLocationPage: BaseViewController,CLLocationManagerDelegate,GMSMapViewDe
        
 //        if (login_session.value(forKey: "Language") as? String) == "en"
 //        {
-           let urlString = NSString(format: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&key=AIzaSyBOJLYvW5jj_TfkLfQ9OfhFDfZijuWMbWI&sessiontoken=1234567890",input)
+           let urlString = NSString(format: "https://foodtogodeliveryph.com/autocomplete/json?input=%@",input)
             
             print(urlString)
                         let url = NSURL(string: urlString.addingPercentEscapes(using: String.Encoding.utf8.rawValue)!)
@@ -562,7 +562,7 @@ class MapLocationPage: BaseViewController,CLLocationManagerDelegate,GMSMapViewDe
 //        }
 //        else
 //        {
-//            let urlString = NSString(format: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&key=AIzaSyBOJLYvW5jj_TfkLfQ9OfhFDfZijuWMbWI&sessiontoken=1234567890&language=th",input)
+//            let urlString = NSString(format: "https://foodtogodeliveryph.com/autocomplete/json?input=%@&key=AIzaSyAvZk2hZFLm8OrjCTOi1ebjHD-D9Rw9iSo&sessiontoken=1234567890&language=th",input)
 //
 //            print(urlString)
 //                let url = NSURL(string: urlString.addingPercentEscapes(using: String.Encoding.utf8.rawValue)!)
@@ -622,7 +622,7 @@ class MapLocationPage: BaseViewController,CLLocationManagerDelegate,GMSMapViewDe
         
         if (login_session.value(forKey: "Language") as? String) == "en"
         {
-        let urlString = NSString(format: "https://maps.googleapis.com/maps/api/place/details/json?input=&placeid=%@&key=AIzaSyBOJLYvW5jj_TfkLfQ9OfhFDfZijuWMbWI&language=en",place_id)
+        let urlString = NSString(format: "https://foodtogodeliveryph.com/place/details/json?input=&placeid=%@",place_id)
             
         print(urlString)
         //let url = NSURL(string: urlString.addingPercentEscapes(using: String.Encoding.utf8.rawValue)!)
@@ -669,7 +669,7 @@ class MapLocationPage: BaseViewController,CLLocationManagerDelegate,GMSMapViewDe
         }
         else
         {
-            let urlString = NSString(format: "https://maps.googleapis.com/maps/api/place/details/json?input=&placeid=%@&key=AIzaSyBOJLYvW5jj_TfkLfQ9OfhFDfZijuWMbWI&language=th",place_id)
+            let urlString = NSString(format: "https://foodtogodeliveryph.com/place/details/json?input=&placeid=%@",place_id)
             print(urlString)
             //let url = NSURL(string: urlString.addingPercentEscapes(using: String.Encoding.utf8.rawValue)!)
             let url = URL(string: urlString as String)

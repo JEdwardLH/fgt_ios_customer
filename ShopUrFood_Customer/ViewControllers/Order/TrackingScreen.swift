@@ -194,7 +194,7 @@ class TrackingScreen: BaseViewController,CLLocationManagerDelegate, GMSMapViewDe
         var wayPoints = ""
         wayPoints = wayPoints.count == 0 ? "\(storeLatitude),\(storeLongitude)" : "\(wayPoints)%7C\(storeLatitude),\(storeLongitude)"
         
-        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(source.latitude),\(source.longitude)&destination=\(destination.latitude),\(destination.longitude)&mode=driving&waypoints=\(wayPoints)&key=AIzaSyBOJLYvW5jj_TfkLfQ9OfhFDfZijuWMbWI")!
+        let url = URL(string: "https://foodtogodeliveryph.com/directions/json?origin=\(source.latitude),\(source.longitude)&destination=\(destination.latitude),\(destination.longitude)&mode=driving&waypoints=\(wayPoints)")!
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
             if error != nil {
