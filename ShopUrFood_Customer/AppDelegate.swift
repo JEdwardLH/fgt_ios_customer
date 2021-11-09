@@ -61,15 +61,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             UNUserNotificationCenter.current().delegate = self
             
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
+            UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge], completionHandler: { (granted, error) in
+                if #available(iOS 14.0, *) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                        self.requestPermission()
+                    })
+                }})
             UIApplication.shared.registerForRemoteNotifications()
+            
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
             UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                self.requestPermission()
+            })
         }
         
         application.registerForRemoteNotifications()
@@ -87,10 +94,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
         self.ConnectToFCM()
         self.languageUpdate1()
-        self.requestPermission()
+       
+        
         return true
     }
     func requestPermission() {
+        print("dsadaddine1")
        if #available(iOS 14, *) {
            ATTrackingManager.requestTrackingAuthorization { status in
                switch status {
@@ -98,9 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                    // Tracking authorization dialog was shown
                    // and we are authorized
                    print("Authorized")
-                let strIDFV = UIDevice.current.identifierForVendor?.uuidString
-                       
-                       print("appsflyersVendor = \(strIDFV!)")
+               
                        
                       
                case .denied:
@@ -116,7 +123,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                    print("Unknown")
                }
            }
+       }else if #available(iOS 15, *) {
+           print("dsadaddine2")
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .authorized:
+                // Tracking authorization dialog was shown
+                // and we are authorized
+                print("Authorized")
+           
+            case .denied:
+                // Tracking authorization dialog was
+                // shown and permission is denied
+                print("Denied")
+            case .notDetermined:
+                // Tracking authorization dialog has not been shown
+                print("Not Determined")
+            case .restricted:
+                print("Restricted")
+            @unknown default:
+                print("Unknown")
+            }
+        }
+       }else if #available(iOS 15.0.2, *) {
+           print("dsadaddine3")
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .authorized:
+                // Tracking authorization dialog was shown
+                // and we are authorized
+                print("Authorized")
+             
+                    
+                   
+            case .denied:
+                // Tracking authorization dialog was
+                // shown and permission is denied
+                print("Denied")
+            case .notDetermined:
+                // Tracking authorization dialog has not been shown
+                print("Not Determined")
+            case .restricted:
+                print("Restricted")
+            @unknown default:
+                print("Unknown")
+            }
+        }
        } else {
+           print("dsadaddine")
            // Fallback on earlier versions
        }
    }

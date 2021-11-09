@@ -108,7 +108,7 @@ class BottomSheetViewController: BaseViewController {
     var payTypeString = String()
     var iPhoneUDIDString = String()
     //let defaultHost = "119.18.55.24"
-    let defaultHost = "13.212.61.29"
+    let defaultHost = "foodtogodeliveryph.com"
 
     var customer_orderId = String()
     var customer_storeId = String()

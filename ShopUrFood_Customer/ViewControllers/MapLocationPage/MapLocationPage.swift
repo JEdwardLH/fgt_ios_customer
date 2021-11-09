@@ -759,7 +759,9 @@ class MapLocationPage: BaseViewController,CLLocationManagerDelegate,GMSMapViewDe
             marker.appearAnimation = GMSMarkerAnimation.pop
             let lat = String(coordinate.latitude)
             let lon = String(coordinate.longitude)
+            
             self.getAddressFromLatLon(pdblLatitude: lat, pdblLongitude: lon)
+            
             let camera = GMSCameraPosition.camera(withLatitude: MomentaryLatitude, longitude: MomentaryLongitude, zoom: 16)
             self.baseMapView?.camera = camera
             self.baseMapView?.animate(to: camera)
