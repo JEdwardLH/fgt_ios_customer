@@ -241,8 +241,12 @@ class NewLoginViewController: BaseViewController,GIDSignInDelegate,UITextFieldDe
             //btnAuthorization.center = self.view.center
             btnAuthorization.addTarget(self, action: #selector(actionHandleAppleSignin), for: .touchUpInside)
             cell?.baseView.addSubview(btnAuthorization)
+            
         } else {
             // Fallback on earlier versions
+            cell?.googleBtn.isHidden = true
+            cell?.fbBtn.isHidden = true
+            
         }
         
         
